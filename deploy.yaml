@@ -1,0 +1,41 @@
+import:
+  - recipe/laravel.php
+  - contrib/php-fpm.php
+  - contrib/yarn.php
+
+config:
+  application: 'laravel-deployer'
+  repository: 'git@github.com:curder/laravel-deployer.git'
+  remote_user: deployer
+  http_user: webadmin
+  base_deploy_path: '/var/www/codes/curder.com'
+  php_fpm_version: '81'
+  php_fpm_service: 'php-fpm{{php_fpm_version}}'
+
+hosts:
+  prod:
+    hostname: 'laravel-deployer.curder.com'
+    deploy_path: '{{ base_deploy_path }}/{{ hostname }}'
+  stage:
+    hostname: 'stage-laravel-deployer.curder.com'
+    deploy_path: '{{ base_deploy_path }}/{{ hostname }}'
+
+tasks:
+  deploy:
+    - deploy:prepare
+    - deploy:vendors
+    - artisan:storage:link
+    - artisan:view:cache
+    - artisan:config:cache
+    - artisan:migrate
+    - yarn:install
+    - npm:run:prod
+    - deploy:publish
+    - php-fpm:reload
+  npm:run:prod:
+    - run: 'cd {{release_path}} && yarn build'
+  php-fpm:reload:
+    - run: 'sudo systemctl reload {{php_fpm_service}}'
+
+after:
+  deploy:failed: deploy:unlock
