@@ -6,6 +6,7 @@ import:
 config:
   application: 'laravel-deployer'
   repository: 'git@github.com:curder/laravel-deployer.git'
+  keep_releases: 5
   remote_user: deployer
   http_user: webadmin
   base_deploy_path: '/var/www/codes/curder.com'
