@@ -7,6 +7,7 @@ config:
   application: 'laravel-deployer'
   repository: 'git@github.com:curder/laravel-deployer.git'
   keep_releases: 5
+  default_timeout: 3600
   remote_user: deployer
   http_user: webadmin
   base_deploy_path: '/var/www/codes/curder.com'
