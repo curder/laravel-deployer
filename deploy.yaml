@@ -10,8 +10,10 @@ config:
   default_timeout: 3600
   remote_user: deployer
   http_user: webadmin
+  # 'bin/php': '/usr/local/bin/php81'
+  # 'bin/git': '/usr/bin/git'
   base_deploy_path: '/var/www/codes/curder.com'
-  php_fpm_version: '81'
+  # php_fpm_version: '81'
   php_fpm_service: 'php-fpm{{php_fpm_version}}'
 
 hosts:
