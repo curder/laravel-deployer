@@ -12,6 +12,7 @@ config:
   http_user: webadmin
   # 'bin/php': '/usr/local/bin/php81'
   # 'bin/git': '/usr/bin/git'
+  identity_file: ~/.ssh/id_rsa
   base_deploy_path: '/var/www/codes/curder.com'
   # php_fpm_version: '81'
   php_fpm_service: 'php-fpm{{php_fpm_version}}'
