@@ -21,10 +21,12 @@ config:
 
 hosts:
   prod:
-    hostname: 'laravel-deployer.curder.com'
+    hostname: laravel-deployer.curder.com
+    branch: master
     deploy_path: '{{ base_deploy_path }}/{{ hostname }}'
   stage:
-    hostname: 'stage-laravel-deployer.curder.com'
+    hostname: stage-laravel-deployer.curder.com
+    branch: stage
     deploy_path: '{{ base_deploy_path }}/{{ hostname }}'
 
 tasks:
