@@ -10,24 +10,24 @@ config:
   default_timeout: 3600
   remote_user: deployer
   http_user: webadmin
-  # 'bin/php': '/usr/local/bin/php81'
-  # 'bin/git': '/usr/bin/git'
-  # 'bin/yarn': '~/.nvm/versions/node/v16.13.0/bin/yarn'
-  # 'bin/composer': '{{bin/php}} /usr/local/bin/composer'
+  # 'bin/php': /usr/local/bin/php82
+  # 'bin/git': /usr/bin/git
+  # 'bin/yarn': ~/.nvm/versions/node/v16.13.0/bin/yarn
+  # 'bin/composer': '{{bin/php}} /usr/local/bin/composer
   identity_file: ~/.ssh/id_rsa
-  base_deploy_path: '/var/www/codes/curder.com'
-  # php_fpm_version: '81'
-  php_fpm_service: 'php-fpm{{php_fpm_version}}'
+  base_deploy_path: /var/www/codes/curder.com
+  # php_fpm_version: 82
+  php_fpm_service: php-fpm{{php_fpm_version}}
 
 hosts:
   prod:
     hostname: laravel-deployer.curder.com
     branch: master
-    deploy_path: '{{ base_deploy_path }}/{{ hostname }}'
+    deploy_path: {{base_deploy_path}}/{{hostname}}
   stage:
     hostname: stage-laravel-deployer.curder.com
     branch: stage
-    deploy_path: '{{ base_deploy_path }}/{{ hostname }}'
+    deploy_path: {{base_deploy_path}}/{{hostname}}
 
 tasks:
   deploy:
