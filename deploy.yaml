@@ -6,6 +6,7 @@ import:
 config:
   application: 'laravel-deployer'
   repository: 'git@github.com:curder/laravel-deployer.git'
+  update_code_strategy: clone
   keep_releases: 5
   default_timeout: 3600
   remote_user: deployer
